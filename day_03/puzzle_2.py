@@ -16,11 +16,11 @@ for slope_x, slope_y in zip([1, 3, 5, 7, 1], [1, 1, 1, 1, 2]):
             continue
 
         ''' The last character is \n, so it must be removed '''
-        line = line_dirty[:-1]
+        line = line_dirty.replace("\n", "")
         trees += (line[current_x] == "#")
 
         ''' 
-        The next point in the next line is given by (old + 3) mod N, 
+        The next point in the next line is given by (old + slope_x) mod N, 
         where N is the length of each line
         '''
         current_x = (current_x + slope_x) % module

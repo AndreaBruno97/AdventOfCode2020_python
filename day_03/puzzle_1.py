@@ -11,7 +11,8 @@ slope = 3
 
 for line_dirty in content:
     ''' The last character is \n, so it must be removed '''
-    line = line_dirty[:-1]
+
+    line = line_dirty.replace("\n", "")
     trees += (line[current_x] == "#")
 
     ''' 
