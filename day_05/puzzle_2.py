@@ -47,11 +47,9 @@ for index, current_id in enumerate(id_list):
             current_id is x+1, the next ID
             id_list[index-1] is x-1, the previous ID
         '''
-        print( current_id - id_list[index-1])
         my_id = current_id - 1
         my_column = my_id % 8
         my_row = int((my_id - my_column) / 8)
         break
 
-print(id_list)
 print("My seat ID is " + str(my_id) + " in row " + str(my_row) + " and column " + str(my_column))

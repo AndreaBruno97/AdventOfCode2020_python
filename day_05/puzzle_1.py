@@ -23,7 +23,7 @@ for line in content:
     row_binary_string = row_string.replace("F", "0").replace("B", "1")
     column_binary_string = column_string.replace("L", "0").replace("R", "1")
 
-    ''' Convert the string (in binary) to the row's and coumn's numbers (in decimal) '''
+    ''' Convert the string (in binary) to the row's and column's numbers (in decimal) '''
     row = int(row_binary_string, 2)
     column = int(column_binary_string, 2)
     id = ( row * 8 ) + column
