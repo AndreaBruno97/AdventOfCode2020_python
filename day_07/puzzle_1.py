@@ -1,10 +1,10 @@
 import re
 
-def enforceRules(rules, colors, current):
+def enforceRules(rules, colors, current, counter):
 
     if current not in rules.keys():
         ''' This bag can't be contained by any other bag '''
-        return colors
+        return colors, counter
 
     for next in rules[current]:
         ''' Search for all the bags that can contain the current one '''
@@ -13,9 +13,10 @@ def enforceRules(rules, colors, current):
             continue
 
         colors[next] = 1
-        colors = enforceRules(rules, colors, next)
+        counter +=1
+        colors, counter = enforceRules(rules, colors, next, counter)
 
-    return colors
+    return colors, counter
 
 ''' Open file '''
 filename = 'input.txt'
@@ -54,13 +55,8 @@ for line in content:
 
 target = "shiny gold"
 
-result_colors = enforceRules(rules, colors, target)
-
 counter = 0
-for result_item in result_colors:
-    if result_colors[result_item] == 1:
-        counter +=1
-
+result_colors, counter = enforceRules(rules, colors, target, counter)
 
 ''' Beware, the current solution is off by 1 for the given input '''
 print("There are " + str(counter + 1) + " possible colors")
