@@ -1,5 +1,8 @@
 
 def generateSet(rules, curr_key, max_size):
+    if(len(rules[curr_key]["set"]) > 0):
+        return rules
+
     if rules[curr_key]["value1"][0] == "a" or rules[curr_key]["value1"][0] == "b":
         rules[curr_key]["set"].add(rules[curr_key]["value1"][0])
         return rules
@@ -35,14 +38,14 @@ with open(filename) as f:
 
 [rules_string, input_string] = content.split("\n\n")
 
-input = rules_string.split("\n")
+input = input_string.split("\n")
 max_size = -1
 for inp in input:
     if len(inp) > max_size:
         max_size = len(inp)
 
 rules = {}
-for rule_dirty in input:
+for rule_dirty in rules_string.split("\n"):
     [key, values] = rule_dirty.replace("\"", "").split(": ")
     if "|" in values:
         [value_1, value_2] = values.split(" | ")
