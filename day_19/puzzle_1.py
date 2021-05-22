@@ -1,4 +1,3 @@
-
 def generateSet(rules, curr_key):
 
     if rules[curr_key]["value1"][0] == "a" or rules[curr_key]["value1"][0] == "b":
@@ -15,9 +14,15 @@ def generateSet(rules, curr_key):
         for str1 in rules[curr_rule[0]]["set"]:
             if(len(curr_rule) == 1):
                 rules[curr_key]["set"].add(str1)
-            else:
+            elif(len(curr_rule) == 2):
                 for str2 in rules[curr_rule[1]]["set"]:
                     rules[curr_key]["set"].add(str1+str2)
+            elif(len(curr_rule) == 3):
+                for str2 in rules[curr_rule[1]]["set"]:
+                    for str3 in rules[curr_rule[2]]["set"]:
+                        rules[curr_key]["set"].add(str1+str2+str3)
+
+
 
     return rules
 
