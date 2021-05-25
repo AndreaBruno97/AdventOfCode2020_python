@@ -127,7 +127,7 @@ while len(pending_tiles) > 0:
         cur_match = cur_match_list[0]
         cur_positioned = [p for p in positioned_tiles if p["id"] == cur_match.id_1][0]
         dir_tile = cur_match.dir_2
-        dir_positioned = cur_match.dir_1 + cur_positioned["value"].spins
+        dir_positioned = (cur_match.dir_1 + cur_positioned["value"].spins)%4
         is_flipped = cur_match.is_flipped
         spin = cur_match.spin_num_2
     else:
@@ -135,7 +135,7 @@ while len(pending_tiles) > 0:
         cur_match = cur_match_list[0]
         cur_positioned = [p for p in positioned_tiles if p["id"] == cur_match.id_2][0]
         dir_tile = cur_match.dir_1
-        dir_positioned = cur_match.dir_2 + cur_positioned["value"].spins
+        dir_positioned = (cur_match.dir_2 + cur_positioned["value"].spins)%4
         is_flipped = cur_match.is_flipped
         spin = cur_match.spin_num_1
 
